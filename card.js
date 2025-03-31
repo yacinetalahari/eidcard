@@ -1,7 +1,12 @@
 window.onload = function() {
     const params = new URLSearchParams(window.location.search);
-    document.getElementById('cardToName').textContent = params.get('to');
-    document.getElementById('cardFromName').textContent = params.get('from');
+    const toName = params.get('to');
+    const fromName = params.get('from');
+
+    if (toName && fromName) {
+        document.getElementById('cardToName').textContent = decodeURIComponent(toName);
+        document.getElementById('cardFromName').textContent = decodeURIComponent(fromName);
+    }
     
     // Create stars
     const container = document.getElementById('starsContainer');
